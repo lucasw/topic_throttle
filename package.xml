@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package>
+  <name>topic_throttle</name>
+  <version>0.0.0</version>
+  <description>The topic_throttle package</description>
+
+  <maintainer email="wsacul@gmail.com">Lucas Walter</maintainer>
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>BSD</license>
+
+  <!-- Url tags are optional, but multiple are allowed, one per tag -->
+  <!-- Optional attribute type can be: website, bugtracker, or repository -->
+  <!-- <url type="website">http://wiki.ros.org/topic_throttle</url> -->
+
+  <!-- Author tags are optional, multiple are allowed, one per tag -->
+  <!-- Authors do not have to be maintainers, but could be -->
+  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+
+  <!-- Dependencies can be catkin packages or system dependencies -->
+  <!-- Use build_depend for packages you need at compile time: -->
+  <!-- Use buildtool_depend for build tool packages: -->
+  <!-- Use run_depend for packages you need at runtime: -->
+  <!-- Use test_depend for packages you need only for testing: -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>nodelet</build_depend>
+  <build_depend>nodelet_topic_tools</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>nodelet</run_depend>
+  <run_depend>nodelet_topic_tools</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+  <export>
+    <nodelet plugin="${prefix}/nodelet.xml" />
+  </export>
+</package>
