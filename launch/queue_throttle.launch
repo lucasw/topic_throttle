@@ -4,6 +4,7 @@
 <arg name="use_python" default="false" doc="use python queue throttling node"/>
 <arg name="use_cpp" default="false" doc="use c++ queue throttling node"/>
 <arg name="use_nodelet" default="false" doc="use nodelet throttling node"/>
+<arg name="use_topic_tools" default="false" doc="use standard throttle"/>
 
 <node name="highrate_pub" pkg="topic_throttle" type="highrate_pub.py"
     output="screen"/>
@@ -19,6 +20,11 @@
   <remap from="topic_in" to="imu"/>
   <remap from="topic_out" to="imu_throttle"/>
   <param name="update_rate" value="1"/>
+</node>
+<node if="$(arg use_topic_tools)"
+    name="imu_topic_tools_throttle" pkg="topic_tools" type="throttle"
+    output="screen"
+    args="messages /imu 1 /imu_throttle">
 </node>
 
 <!-- TODO(lwalter) add another node to analyze rates of topics,
