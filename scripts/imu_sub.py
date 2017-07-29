@@ -12,7 +12,7 @@ def callback(data):
     # elapsed = data.header.stamp - last_pub
     elapsed = cur - last_pub
     remaining = period - elapsed
-    if remaining.to_sec > 0:
+    if remaining.to_sec() > 0:
         rospy.sleep(remaining.to_sec())
         return
 
@@ -29,6 +29,6 @@ rospy.init_node('imu_sub')
 count = 0
 last_pub = rospy.Time.now()
 start = rospy.Time.now()
-sub = rospy.Subscriber("imu", Imu, callback, queue_size=3)
+sub = rospy.Subscriber("imu", Imu, callback, queue_size=1)
 pub = rospy.Publisher("imu_throttle", Imu, queue_size=2)
 rospy.spin()
