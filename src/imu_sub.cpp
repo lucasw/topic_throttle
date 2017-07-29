@@ -11,7 +11,7 @@ void callback(const sensor_msgs::Imu::ConstPtr& msg)
   ros::Duration period(1.0);
   ros::Duration elapsed = cur - last_pub;
   ros::Duration remaining = period - elapsed;
-  if (remaining > 0)
+  if (remaining.toSec() > 0)
   {
     remaining.sleep();
     return;
