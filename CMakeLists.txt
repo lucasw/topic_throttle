@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   nodelet
   roscpp
   std_msgs
+  topic_tools
 )
 
 ###################################
@@ -28,8 +29,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(imu_sub src/imu_sub.cpp)
-target_link_libraries(imu_sub ${catkin_LIBRARIES})
+add_executable(queue_throttle src/queue_throttle.cpp)
+target_link_libraries(queue_throttle ${catkin_LIBRARIES})
 
 add_library(imu_nodelet_throttle src/imu_nodelet_throttle.cpp)
 target_link_libraries(imu_nodelet_throttle ${catkin_LIBRARIES})

@@ -9,8 +9,11 @@
 <node name="highrate_pub" pkg="topic_throttle" type="highrate_pub.py"
     output="screen"/>
 <node if="$(arg use_cpp)"
-    name="imu_sub_cpp" pkg="topic_throttle" type="imu_sub"
-    output="screen"/>
+    name="queue_throttle" pkg="topic_throttle" type="queue_throttle"
+    output="screen">
+  <remap from="topic" to="imu"/>
+  <remap from="topic_throttle" to="imu_throttle"/>
+</node>
 <node if="$(arg use_python)"
     name="imu_sub_py" pkg="topic_throttle" type="imu_sub.py"
     output="screen"/>
