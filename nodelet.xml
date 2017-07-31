@@ -1,4 +1,11 @@
-<library path="lib/libimu_nodelet_throttle">
+<library path="lib/libtopic_throttle">
+  <class name="topic_throttle/QueueThrottle"
+      type="topic_throttle::QueueThrottle"
+      base_class_type="nodelet::Nodelet">
+    <description>
+			queue throttle
+		</description>
+  </class>
   <class name="topic_throttle/NodeletThrottleImu"
       type="topic_throttle::NodeletThrottleImu"
       base_class_type="nodelet::Nodelet">

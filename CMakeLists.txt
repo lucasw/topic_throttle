@@ -20,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES topic_throttle
+  LIBRARIES queue_throttle
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -29,11 +29,16 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(queue_throttle src/queue_throttle.cpp)
-target_link_libraries(queue_throttle ${catkin_LIBRARIES})
+add_library(topic_throttle
+  src/queue_throttle.cpp
+  test/imu_nodelet_throttle.cpp  # TODO(lucasw) only build in test mode, in separate lib
+)
+target_link_libraries(topic_throttle ${catkin_LIBRARIES})
 
-add_library(imu_nodelet_throttle src/imu_nodelet_throttle.cpp)
-target_link_libraries(imu_nodelet_throttle ${catkin_LIBRARIES})
+add_executable(queue_throttle_node src/queue_throttle_node.cpp)
+add_dependencies(queue_throttle_node topic_throttle)
+target_link_libraries(queue_throttle_node ${catkin_LIBRARIES})
 
-add_executable(imu_throttle src/imu_throttle.cpp)
+# TODO(lucasw) only build this in test build mode
+add_executable(imu_throttle test/imu_throttle.cpp)
 target_link_libraries(imu_throttle ${catkin_LIBRARIES})
